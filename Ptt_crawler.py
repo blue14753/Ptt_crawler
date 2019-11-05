@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from bs4 import BeautifulSoup
 import requests
 import json
+import codecs
 
 
 def get_url(url):
@@ -28,8 +29,8 @@ def parse(soup):
     json_data = json.dumps(articles,ensure_ascii=False)
     print(json_data)
     
-    with open('./data.json','w',encoding='utf-8') as f:
-        json.dump(json_data,f)
+   fp = codecs.open("data.json", 'w', encoding="utf-8")
+    json.dump(json_data, fp, indent=4, ensure_ascii=False)
     
 
 
